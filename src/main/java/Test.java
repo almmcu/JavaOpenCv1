@@ -1,3 +1,5 @@
+import image.operations.ConvertMatToBufferedImage;
+import image.operations.DisplayImage;
 import org.opencv.core.*;
 import org.opencv.features2d.FeatureDetector;
 import org.opencv.highgui.Highgui;
@@ -19,12 +21,13 @@ public class Test {
         mc5.setTo(new Scalar(5));
         System.out.println("OpenCV Mat data:\n" + m.dump());
         FeatureDetector SURF = FeatureDetector.create(FeatureDetector.SURF);
-        Mat img = Highgui.imread("C:\\Users\\Oda\\Desktop\\ICCESEN_2016_Pictures\\2.jpg");
+//        Mat img = Highgui.imread("C:\\Users\\Oda\\Desktop\\ICCESEN_2016_Pictures\\2.jpg");
+        Mat img = Highgui.imread("C:\\Users\\Oda\\Downloads\\1.jpg");
 
-       MatOfKeyPoint keyPoints = new MatOfKeyPoint();
-        // İki reim içinde keypoints hesabı
-        SURF.detect(img, keyPoints);
-
-        System.out.println("keyPoints.size() = " + keyPoints.size());
+        ConvertMatToBufferedImage convertMatToBufferedImage =
+                new ConvertMatToBufferedImage(img);
+        DisplayImage displayImage =
+                new DisplayImage(convertMatToBufferedImage.Mat2BufferedImage());
+        displayImage.display();
     }
 }
