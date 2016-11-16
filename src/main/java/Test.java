@@ -1,8 +1,6 @@
-import org.opencv.core.Core;
-import org.opencv.core.CvType;
-import org.opencv.core.Mat;
-import org.opencv.core.Scalar;
+import org.opencv.core.*;
 import org.opencv.features2d.FeatureDetector;
+import org.opencv.highgui.Highgui;
 
 /**
  * Created by Oda114 on 15.11.2016.
@@ -21,6 +19,12 @@ public class Test {
         mc5.setTo(new Scalar(5));
         System.out.println("OpenCV Mat data:\n" + m.dump());
         FeatureDetector SURF = FeatureDetector.create(FeatureDetector.SURF);
+        Mat img = Highgui.imread("C:\\Users\\Oda\\Desktop\\ICCESEN_2016_Pictures\\2.jpg");
 
+       MatOfKeyPoint keyPoints = new MatOfKeyPoint();
+        // İki reim içinde keypoints hesabı
+        SURF.detect(img, keyPoints);
+
+        System.out.println("keyPoints.size() = " + keyPoints.size());
     }
 }
