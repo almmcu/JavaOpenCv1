@@ -1,8 +1,11 @@
+import image.operations.Consts;
 import image.operations.ConvertMatToBufferedImage;
 import image.operations.DisplayImage;
+import image.operations.keypoint.KeyPointDetector;
 import org.opencv.core.*;
 import org.opencv.features2d.DescriptorExtractor;
 import org.opencv.features2d.FeatureDetector;
+import org.opencv.features2d.KeyPoint;
 import org.opencv.highgui.Highgui;
 
 /**
@@ -26,11 +29,11 @@ public class Test {
         mc5.setTo(new Scalar(5));
         System.out.println("OpenCV Mat data:\n" + m.dump());
 
-        String img_path = "C:\\Users\\Oda114\\Desktop\\Hilal_Deniz.jpg";
-        // "C:\\Users\\Oda\\Desktop\\ICCESEN_2016_Pictures\\2.jpg"
+        KeyPointDetector keyPointDetector = new KeyPointDetector();
+        keyPointDetector.detectKeyPoint();
 
         // reading image
-        Mat img = Highgui.imread(img_path);
+        Mat img = Highgui.imread(Consts.IMAGE_PATH);
 
         // Keypoint extracting
         FeatureDetector SURF = FeatureDetector.create(FeatureDetector.SURF);
